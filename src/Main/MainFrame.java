@@ -4,6 +4,15 @@
  */
 package Main;
 
+import View.MenuAbout;
+import View.MenuDashboard;
+import View.MenuGuru;
+import View.MenuJurusan;
+import View.MenuKelas;
+import View.MenuSiswa;
+import java.awt.Color;
+import javax.swing.JFrame;
+
 /**
  *
  * @author ACER
@@ -15,6 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -56,6 +66,11 @@ public class MainFrame extends javax.swing.JFrame {
         pn_Content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pn_Kiri.setBackground(new java.awt.Color(0, 102, 255));
 
@@ -396,6 +411,11 @@ public class MainFrame extends javax.swing.JFrame {
         pn_Atas.setBackground(new java.awt.Color(102, 102, 102));
 
         lb_Close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Close Window.png"))); // NOI18N
+        lb_Close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lb_CloseMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_AtasLayout = new javax.swing.GroupLayout(pn_Atas);
         pn_Atas.setLayout(pn_AtasLayout);
@@ -425,88 +445,118 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pn_DashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_DashboardMouseEntered
-        // TODO add your handling code here:
+        pn_Dashboard.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_DashboardMouseEntered
 
     private void pn_DashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_DashboardMouseExited
-        // TODO add your handling code here:
+        pn_Dashboard.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_DashboardMouseExited
 
     private void pn_DashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_DashboardMouseClicked
-        // TODO add your handling code here:
+        pn_Content.removeAll();
+        pn_Content.add(new MenuDashboard());
+        pn_Content.repaint();
+        pn_Content.revalidate();
     }//GEN-LAST:event_pn_DashboardMouseClicked
 
     private void pn_JurusanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_JurusanMouseClicked
-        // TODO add your handling code here:
+        pn_Content.removeAll();
+        pn_Content.add(new MenuJurusan());
+        pn_Content.repaint();
+        pn_Content.revalidate();
     }//GEN-LAST:event_pn_JurusanMouseClicked
 
     private void pn_JurusanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_JurusanMouseEntered
-        // TODO add your handling code here:
+        pn_Jurusan.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_JurusanMouseEntered
 
     private void pn_JurusanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_JurusanMouseExited
-        // TODO add your handling code here:
+        pn_Jurusan.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_JurusanMouseExited
 
     private void pn_GuruMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_GuruMouseClicked
-        // TODO add your handling code here:
+        pn_Content.removeAll();
+        pn_Content.add(new MenuGuru());
+        pn_Content.repaint();
+        pn_Content.revalidate();
     }//GEN-LAST:event_pn_GuruMouseClicked
 
     private void pn_GuruMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_GuruMouseEntered
-        // TODO add your handling code here:
+        pn_Guru.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_GuruMouseEntered
 
     private void pn_GuruMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_GuruMouseExited
-        // TODO add your handling code here:
+        pn_Guru.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_GuruMouseExited
 
     private void pn_KelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_KelasMouseClicked
-        // TODO add your handling code here:
+        pn_Content.removeAll();
+        pn_Content.add(new MenuKelas());
+        pn_Content.repaint();
+        pn_Content.revalidate();
     }//GEN-LAST:event_pn_KelasMouseClicked
 
     private void pn_KelasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_KelasMouseEntered
-        // TODO add your handling code here:
+        pn_Kelas.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_KelasMouseEntered
 
     private void pn_KelasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_KelasMouseExited
-        // TODO add your handling code here:
+        pn_Kelas.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_KelasMouseExited
 
     private void pn_SiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_SiswaMouseClicked
-        // TODO add your handling code here:
+        pn_Content.removeAll();
+        pn_Content.add(new MenuSiswa());
+        pn_Content.repaint();
+        pn_Content.revalidate();
     }//GEN-LAST:event_pn_SiswaMouseClicked
 
     private void pn_SiswaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_SiswaMouseEntered
-        // TODO add your handling code here:
+        pn_Siswa.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_SiswaMouseEntered
 
     private void pn_SiswaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_SiswaMouseExited
-        // TODO add your handling code here:
+        pn_Siswa.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_SiswaMouseExited
 
     private void pn_AboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_AboutMouseClicked
-        // TODO add your handling code here:
+        pn_Content.removeAll();
+        pn_Content.add(new MenuAbout());
+        pn_Content.repaint();
+        pn_Content.revalidate();
     }//GEN-LAST:event_pn_AboutMouseClicked
 
     private void pn_AboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_AboutMouseEntered
-        // TODO add your handling code here:
+        pn_About.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_AboutMouseEntered
 
     private void pn_AboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_AboutMouseExited
-        // TODO add your handling code here:
+        pn_About.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_AboutMouseExited
 
     private void pn_LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_LogoutMouseClicked
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_pn_LogoutMouseClicked
 
     private void pn_LogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_LogoutMouseEntered
-        // TODO add your handling code here:
+        pn_Logout.setBackground(new Color(0, 51, 255));
     }//GEN-LAST:event_pn_LogoutMouseEntered
 
     private void pn_LogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_LogoutMouseExited
-        // TODO add your handling code here:
+        pn_Logout.setBackground(new Color(0, 102, 255));
     }//GEN-LAST:event_pn_LogoutMouseExited
+
+    private void lb_CloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_CloseMouseClicked
+        dispose();
+    }//GEN-LAST:event_lb_CloseMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        pn_Content.removeAll();
+        pn_Content.add(new MenuDashboard());
+        pn_Content.repaint();
+        pn_Content.revalidate();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
