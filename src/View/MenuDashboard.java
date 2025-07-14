@@ -4,6 +4,12 @@
  */
 package View;
 
+import Main.Koneksi;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author ACER
@@ -15,6 +21,46 @@ public class MenuDashboard extends javax.swing.JPanel {
      */
     public MenuDashboard() {
         initComponents();
+        isiDataDashboard();
+    }
+
+    void isiDataDashboard() {
+        Connection conn = Koneksi.konek();
+        try {
+            String sqlJurusan = "SELECT COUNT(*) AS jumlah FROM jurusan";
+            Statement psJurusan = conn.createStatement();
+            ResultSet rsJurusan = psJurusan.executeQuery(sqlJurusan);
+            if (rsJurusan.next()) {
+                int jumlah = rsJurusan.getInt("jumlah");
+                lb_Jurusan.setText(String.valueOf(jumlah));
+            }
+
+            String sqlGuru = "SELECT COUNT(*) AS jumlah FROM guru";
+            Statement psGuru = conn.createStatement();
+            ResultSet rsGuru = psGuru.executeQuery(sqlGuru);
+            if (rsGuru.next()) {
+                int jumlah = rsGuru.getInt("jumlah");
+                lb_Guru.setText(String.valueOf(jumlah));
+            }
+
+            String sqlSiswa = "SELECT COUNT(*) AS jumlah FROM siswa";
+            Statement psSiswa = conn.createStatement();
+            ResultSet rsSiswa = psSiswa.executeQuery(sqlSiswa);
+            if (rsSiswa.next()) {
+                int jumlah = rsSiswa.getInt("jumlah");
+                lb_Siswa.setText(String.valueOf(jumlah));
+            }
+
+            String sqlKelas = "SELECT COUNT(*) AS jumlah FROM kelas";
+            Statement psKelas = conn.createStatement();
+            ResultSet rsKelas = psKelas.executeQuery(sqlKelas);
+            if (rsKelas.next()) {
+                int jumlah = rsKelas.getInt("jumlah");
+                lb_Kelas.setText(String.valueOf(jumlah));
+            }
+        } catch (SQLException e) {
+            System.err.println("Gagal mengambil data! " + e);
+        }
     }
 
     /**
@@ -31,19 +77,19 @@ public class MenuDashboard extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lb_Jurusan = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lb_Guru = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lb_Siswa = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lb_Kelas = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -79,9 +125,9 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("3");
+        lb_Jurusan.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
+        lb_Jurusan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_Jurusan.setText("3");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,7 +136,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_Jurusan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -98,7 +144,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(lb_Jurusan, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -129,9 +175,9 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("15");
+        lb_Guru.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
+        lb_Guru.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_Guru.setText("15");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -140,7 +186,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_Guru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -148,7 +194,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(lb_Guru, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -179,9 +225,9 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("300");
+        lb_Siswa.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
+        lb_Siswa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_Siswa.setText("300");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -190,7 +236,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_Siswa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -198,7 +244,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(lb_Siswa, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -229,9 +275,9 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("10");
+        lb_Kelas.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
+        lb_Kelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_Kelas.setText("10");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -240,7 +286,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_Kelas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -248,7 +294,7 @@ public class MenuDashboard extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(lb_Kelas, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -293,13 +339,9 @@ public class MenuDashboard extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -309,5 +351,9 @@ public class MenuDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lb_Guru;
+    private javax.swing.JLabel lb_Jurusan;
+    private javax.swing.JLabel lb_Kelas;
+    private javax.swing.JLabel lb_Siswa;
     // End of variables declaration//GEN-END:variables
 }
